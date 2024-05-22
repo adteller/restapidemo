@@ -1,5 +1,5 @@
 node {
-  def dockerHubRepo = 'alcazels@gmail.com/daumsimac'
+  def dockerHubRepo = 'adteller/daumsimac'
   def dockerHubCredentialsId = 'DockerHub_ID' 
   
   stage("Clone the project") {
@@ -19,7 +19,7 @@ node {
     stage("Deployment") {
       sh "chmod +x ./gradlew"
       sh 'nohup ./gradlew bootRun -Dserver.port=8280 &'
-      sh 'echo #!asdf2580 | sudo docker login -u alcazels@gmail.com --password-stdin'
+      sh 'echo #!asdf2580 | sudo docker login -u adteller'
       sh 'sudo docker build -t daumsimac/restapidemo:1.0 .'
     }
     stage('Push Docker Image') {
